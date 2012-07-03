@@ -11,7 +11,9 @@ class SessionController < ApplicationController
         session[:user_id] = u.id
         redirect_to welcome_path
       else
-        flash.now[:message] = "Invalid password"
+        u.failed_login_attempts += 1
+        u.save!
+        flash.now[:message] = "Invalid password$#{u.failed_login_attempts}"
         render :action => :new
       end
     else

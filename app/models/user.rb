@@ -29,5 +29,6 @@ class User < ActiveRecord::Base
     # If the end-user did not specify any admin privilege,
     # then we assume that they are not an administrator.
     self.is_admin ||= false
+    self.failed_login_attempts = 0
   end
 end
