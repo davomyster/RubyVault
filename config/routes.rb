@@ -3,6 +3,8 @@ RubyVault::Application.routes.draw do
   #get "accounts/index"
 
   resources :accounts, :only => :index
+  resources :api, :only => :index
+  post "api/index"
 
   get "enrollment/state_identity", :as => :begin_enrollment
   post "enrollment/verify_identity"

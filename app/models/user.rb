@@ -27,7 +27,6 @@ class User < ActiveRecord::Base
   def can_login?
     can_login = false
 
-    #We unlock the account if the last login attempt was 30 mins ago or more
     if self.locked
       if Time.now >= self.last_login_attempt+LOCKOUT_PERIOD.seconds
         #reset the counter
